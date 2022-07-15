@@ -2036,6 +2036,17 @@
     regenerator-runtime "^0.13.7"
     ts-dedent "^2.0.0"
 
+"@storybook/addon-postcss@^3.0.0-alpha.1":
+  version "3.0.0-alpha.1"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-postcss/-/addon-postcss-3.0.0-alpha.1.tgz#aa69bbeeb778fe184f9880da44b0a7883fc86ba3"
+  integrity sha512-j3DB//h89ctz0Orh1N4AHuzdzYhbL5XhUdh1V5rJ6tPOhHZ57v60tS4owukY4nE5gqM345lbuXK6MjbSZPqZdQ==
+  dependencies:
+    "@storybook/node-logger" "^6.1.14"
+    css-loader "^3.6.0"
+    postcss "^7.0.35"
+    postcss-loader "^4.2.0"
+    style-loader "^1.3.0"
+
 "@storybook/addon-toolbars@6.5.9":
   version "6.5.9"
   resolved "https://registry.yarnpkg.com/@storybook/addon-toolbars/-/addon-toolbars-6.5.9.tgz#feedfdac08482d43bb1f3cc00840d80322c5eace"
@@ -2581,7 +2592,7 @@
     prettier ">=2.2.1 <=2.3.0"
     ts-dedent "^2.0.0"
 
-"@storybook/node-logger@6.5.9", "@storybook/node-logger@^6.5.9":
+"@storybook/node-logger@6.5.9", "@storybook/node-logger@^6.1.14", "@storybook/node-logger@^6.5.9":
   version "6.5.9"
   resolved "https://registry.yarnpkg.com/@storybook/node-logger/-/node-logger-6.5.9.tgz#129cfe0d0f79cab4f6a2ba194d39516680b1626f"
   integrity sha512-nZZNZG2Wtwv6Trxi3FrnIqUmB55xO+X/WQGPT5iKlqNjdRIu/T72mE7addcp4rbuWCQfZUhcDDGpBOwKtBxaGg==
