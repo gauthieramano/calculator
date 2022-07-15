@@ -1,0 +1,6 @@
+# storybook
+/storybook-static
+/src/storybook-example
+
+# production
+/build
