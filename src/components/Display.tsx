@@ -8,7 +8,7 @@ type Props = {
 const DEFAULT_LABEL = "-";
 
 const Display = ({ action, digit }: Props) => (
-  <div className="grid grid-cols-[auto_auto_1fr] items-end gap-2 rounded-lg bg-sky-100 px-8 py-4 shadow-inner">
+  <div className="grid grid-cols-[auto_auto_1fr] items-end gap-2 rounded-lg bg-sky-100 px-8 py-4 shadow-inner transition duration-700 dark:bg-gray-900 dark:text-cyan-100">
     <p>Action</p>
     <p>:</p>
     {action ? (
