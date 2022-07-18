@@ -20,6 +20,9 @@
   },
   "plugins": ["react", "@typescript-eslint", "tailwindcss"],
   "rules": {
+    "newline-after-var": ["error", "always"],
+    "newline-before-return": "error",
+    "object-shorthand": "error",
     "react/react-in-jsx-scope": "off"
   },
   "settings": {
