@@ -37,6 +37,19 @@ export enum Action {
   Reset = 9,
 }
 
+export type Operation =
+  | Action.Add
+  | Action.Substract
+  | Action.Multiply
+  | Action.Divide;
+
+export type Computation = {
+  operation: Operation;
+  firstNumber: string;
+  secondNumber: string;
+  result: string;
+};
+
 export const ACTION_ICONS = {
   [Action.SetDigit]: <FaCalculator />,
   [Action.SetPoint]: <FaCircle />,
@@ -66,5 +79,65 @@ export const handledKeyActionMap: Record<HandledKey, Action> = {
 
 const HANDLED_KEYS = Object.values(HandledKey);
 
-export const isHandledKey = (key: string | HandledKey): key is HandledKey =>
+export const CHARS_MAX_QUANTITY = 12;
+
+export const isHandledKey = (key: string): key is HandledKey =>
   HANDLED_KEYS.includes(key as HandledKey);
+
+export const isOperation = (action: Action): action is Operation =>
+  [Action.Add, Action.Substract, Action.Multiply, Action.Divide].includes(
+    action
+  );
+
+export const isValidValue = (value: string) =>
+  value !== "-" && value !== "-." && parseFloat(value) !== 0;
+
+export const compute = (
+  operation: Operation,
+  firstNumber: number,
+  secondNumber: number
+) =>
+  operation === Action.Add
+    ? firstNumber + secondNumber
+    : operation === Action.Substract
+    ? firstNumber - secondNumber
+    : operation === Action.Multiply
+    ? firstNumber * secondNumber
+    : firstNumber / secondNumber;
+
+/**
+ * ## Round numbers to:
+ * - avoid JavaScript lack of precision
+ * - improve readability
+ *
+ * Eg (with `CHARS_MAX_QUANTITY = 12`):
+ *
+ * ```
+ * 1_000_000_000_000.1 + 0.2 =  1000000000000.2999  ->  1000000000000
+ *           700.94 - 640.14 =  60.80000000000007   ->  60.8
+ *             -1000.1 - 0.2 = -1000.3000000000001  -> -1000.3
+ *                11.1 + 0.2 =  11.299999999999999  ->  11.3
+ *                0.14 * 100 =  14.000000000000002  ->  14
+ *                 0.1 + 0.2 =  0.30000000000000004 ->  0.3
+ * ```
+ **/
+export const round = (value: number) => {
+  const stringValue = value.toString();
+
+  if (stringValue.length <= CHARS_MAX_QUANTITY) {
+    return value;
+  }
+
+  const pointIndex = stringValue.indexOf(".");
+
+  if (pointIndex === -1) {
+    return value;
+  }
+
+  // Get rid of decimales if there is already a lot of digits before the point
+  const decimalesQuantity = Math.max(0, CHARS_MAX_QUANTITY - pointIndex - 1);
+
+  const precision = Math.pow(10, decimalesQuantity);
+
+  return Math.round(value * precision) / precision;
+};
