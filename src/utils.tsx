@@ -44,6 +44,7 @@ export type Operation =
   | Action.Divide;
 
 export type Computation = {
+  time: string;
   operation: Operation;
   firstNumber: string;
   secondNumber: string;

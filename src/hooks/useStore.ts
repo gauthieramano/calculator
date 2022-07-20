@@ -18,6 +18,9 @@ const useStore = () => {
   const [firstNumber, setFirstNumber] = useState("0");
   const [secondNumber, setSecondNumber] = useState("");
   const [lastComputation, setLastComputation] = useState<Computation>();
+  const [previousComputations, setPreviousComputations] = useState<
+    Computation[]
+  >([]);
 
   useEffect(() => {
     if (!action) {
@@ -161,14 +164,35 @@ const useStore = () => {
     setFirstNumber(properResult);
     setSecondNumber("");
 
-    setLastComputation({ operation, firstNumber, secondNumber, result });
-  }, [action, digit, operation, firstNumber, secondNumber, lastComputation]);
+    if (lastComputation) {
+      setPreviousComputations([...previousComputations, lastComputation]);
+    }
+
+    const nextLastComputation = {
+      time: new Date().getTime().toString(),
+      operation,
+      firstNumber,
+      secondNumber,
+      result,
+    };
+
+    setLastComputation(nextLastComputation);
+  }, [
+    action,
+    digit,
+    operation,
+    firstNumber,
+    secondNumber,
+    lastComputation,
+    previousComputations,
+  ]);
 
   return {
     operation,
     firstNumber,
     secondNumber,
     lastComputation,
+    previousComputations,
     setAction,
     setDigit,
   };

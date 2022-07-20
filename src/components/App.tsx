@@ -2,6 +2,7 @@ import { useCallback } from "react";
 import useEasterEgg from "../hooks/useEasterEgg";
 import useKeyListener from "../hooks/useKeyListener";
 import useStore from "../hooks/useStore";
+import useToggle from "../hooks/useToggle";
 import { Action } from "../utils";
 import Display from "./Display";
 import Keyboard from "./Keyboard";
@@ -13,6 +14,7 @@ const App = () => {
     firstNumber,
     secondNumber,
     lastComputation,
+    previousComputations,
     setAction,
     setDigit,
   } = useStore();
@@ -30,14 +32,20 @@ const App = () => {
     lastComputation
   );
 
+  const [isListDisplayed, toggleList] = useToggle();
+
   return (
     <Page
+      isListDisplayed={isListDisplayed}
       displayComponent={
         <Display
           operation={operation}
           firstNumber={firstNumber}
           secondNumber={secondNumber}
           lastComputation={lastComputation}
+          previousComputations={previousComputations}
+          isListDisplayed={isListDisplayed}
+          toggleList={toggleList}
         />
       }
       keyboardComponent={<Keyboard handleAction={handleAction} />}
