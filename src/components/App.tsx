@@ -3,6 +3,7 @@ import useKeyListener from "../hooks/useKeyListener";
 import useStore from "../hooks/useStore";
 import { Action } from "../utils";
 import Display from "./Display";
+import Keyboard from "./Keyboard";
 import Page from "./Page";
 
 const App = () => {
@@ -32,6 +33,7 @@ const App = () => {
           lastComputation={lastComputation}
         />
       }
+      keyboardComponent={<Keyboard handleAction={handleAction} />}
     />
   );
 };
