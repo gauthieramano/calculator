@@ -1,4 +1,5 @@
 import { useCallback } from "react";
+import useEasterEgg from "../hooks/useEasterEgg";
 import useKeyListener from "../hooks/useKeyListener";
 import useStore from "../hooks/useStore";
 import { Action } from "../utils";
@@ -23,6 +24,12 @@ const App = () => {
 
   useKeyListener(handleAction);
 
+  const backgroundClassName = useEasterEgg(
+    firstNumber,
+    secondNumber,
+    lastComputation
+  );
+
   return (
     <Page
       displayComponent={
@@ -34,6 +41,7 @@ const App = () => {
         />
       }
       keyboardComponent={<Keyboard handleAction={handleAction} />}
+      backgroundClassName={backgroundClassName}
     />
   );
 };

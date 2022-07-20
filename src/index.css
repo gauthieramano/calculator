@@ -10,3 +10,11 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+.bg-fire {
+  background-image: url("./assets/fire.jpg");
+}
+
+.bg-sun {
+  background-image: url("./assets/sun.jpg");
+}
