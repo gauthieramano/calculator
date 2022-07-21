@@ -28,30 +28,27 @@ const Display = ({
   const isLongFirstNumber = firstNumber.length >= LONG_LENGTH;
   const isLongSecondNumber = secondNumber.length >= LONG_LENGTH;
   const hasDisplayableList = Boolean(previousComputations.length);
+  const isListReallyDisplayed = isListDisplayed && hasDisplayableList;
 
   return (
     <div className="relative ">
-      <div className="flex flex-col justify-between gap-2 rounded-lg bg-sky-100 px-8 py-4 shadow-inner transition duration-700 dark:bg-gray-900 dark:text-cyan-100">
+      <div className="flex flex-col justify-between gap-2 bg-gradient-radial from-white via-sky-100 to-sky-100 px-8 pb-4 shadow-inner transition duration-700 dark:from-gray-800 dark:via-gray-900 dark:to-gray-900 dark:text-cyan-100 sm:rounded-lg">
         {/* **********************************************
          *             Previous computations             *
          *************************************************/}
 
-        {isListDisplayed && hasDisplayableList && (
-          <div className="mb-4 border-b border-sky-200 pb-4 dark:border-gray-600">
-            <>
-              <p className="mb-3 text-xs text-gray-400">
-                Previous computations:
-              </p>
-              {previousComputations.map((currentComputation) => (
-                <div key={currentComputation.time} className="flex gap-3">
-                  <FaPlay className="text-cyan-600" />
-                  <ComputationLine
-                    computation={currentComputation}
-                    className="text-xs"
-                  />
-                </div>
-              ))}
-            </>
+        {isListReallyDisplayed && (
+          <div className="mt-4 border-b border-sky-200 pb-2 dark:border-gray-600">
+            <p className="mb-3 text-xs text-gray-400">Previous computations:</p>
+            {previousComputations.map((currentComputation) => (
+              <div key={currentComputation.time} className="flex gap-3">
+                <FaPlay className="text-cyan-600" />
+                <ComputationLine
+                  computation={currentComputation}
+                  className="text-xs"
+                />
+              </div>
+            ))}
           </div>
         )}
 
@@ -60,7 +57,7 @@ const Display = ({
          *************************************************/}
 
         <div
-          className={`mb-4 h-16 ${
+          className={`mb-4 h-20 ${
             lastComputation
               ? "border-b border-sky-200 dark:border-gray-600"
               : ""
@@ -68,7 +65,13 @@ const Display = ({
         >
           {lastComputation && (
             <>
-              <p className="text-xs text-gray-400">Last computation:</p>
+              <p
+                className={`text-xs text-gray-400 ${
+                  isListReallyDisplayed ? "mt-1 mb-3" : "mt-4"
+                }`}
+              >
+                Last computation:
+              </p>
               <ComputationLine
                 computation={lastComputation}
                 className="text-xs"
@@ -145,7 +148,7 @@ const Display = ({
         <ListButton
           isOpen={isListDisplayed}
           onClick={toggleList}
-          className="absolute top-[-1rem] right-6"
+          className="absolute top-[-0.75rem] right-8"
         />
       )}
     </div>

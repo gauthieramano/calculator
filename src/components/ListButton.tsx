@@ -8,6 +8,7 @@ type Props = {
 
 const ListButton = ({ isOpen, className = "", onClick }: Props) => (
   <button
+    title={`${isOpen ? "Hide" : "Show"} previous computations`}
     onClick={onClick}
     className={`rounded-full bg-blue-700 p-3 text-white hover:bg-blue-500 ${className}`}
   >

@@ -1,0 +1,4 @@
+body {
+  /* Tailwind equivalent: CSS bg-blue-700 -> bg-cyan-600 */
+  background: linear-gradient(90deg, rgb(29 78 216) 20%, rgb(8 145 178) 80%);
+}

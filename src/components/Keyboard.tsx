@@ -6,12 +6,16 @@ type Props = {
 };
 
 const Keyboard = ({ handleAction }: Props) => (
-  <div className="grid h-full grid-cols-4 gap-3 text-2xl font-bold mid:text-3xl tall:text-4xl">
-    <Key action={Action.Reset} handleAction={handleAction} />
+  <div className="grid h-full grid-cols-4 gap-2 text-2xl font-bold sm:gap-3 mid:text-3xl tall:text-4xl">
+    <Key
+      action={Action.Reset}
+      handleAction={handleAction}
+      className="text-xl mid:text-3xl tall:text-4xl"
+    />
     <Key
       action={Action.Delete}
       handleAction={handleAction}
-      className="col-span-2"
+      className="col-span-2 text-3xl mid:text-4xl tall:text-5xl"
     />
     <Key action={Action.Divide} handleAction={handleAction} />
 
@@ -39,7 +43,7 @@ const Keyboard = ({ handleAction }: Props) => (
     <Key
       action={Action.SetPoint}
       handleAction={handleAction}
-      className="text-lg"
+      className="text-sm mid:text-base tall:text-lg"
     />
     <Key action={Action.Equal} handleAction={handleAction} />
   </div>
