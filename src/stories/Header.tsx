@@ -1,5 +1,3 @@
-import React from "react";
-
 import { Button } from "./Button";
 import "./header.css";
 
@@ -20,7 +18,7 @@ export const Header = ({
   onLogout,
   onCreateAccount,
 }: HeaderProps) => (
-  <header>
+  <header id="storybook-example">
     <div className="wrapper">
       <div>
         <svg
