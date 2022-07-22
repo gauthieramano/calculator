@@ -36,7 +36,7 @@ const App = () => {
 
   return (
     <Page
-      isListDisplayed={isListDisplayed}
+      hasFullHeight={isListDisplayed}
       displayComponent={
         <Display
           operation={operation}

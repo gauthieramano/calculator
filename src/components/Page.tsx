@@ -3,14 +3,14 @@ import DarkMode from "./DarkMode";
 import FooterButton from "./FooterButton";
 
 type Props = {
-  isListDisplayed: boolean;
+  hasFullHeight: boolean;
   displayComponent: JSX.Element;
   keyboardComponent: JSX.Element;
   backgroundClassName?: string;
 };
 
 const Page = ({
-  isListDisplayed,
+  hasFullHeight,
   displayComponent,
   keyboardComponent,
   backgroundClassName = "",
@@ -27,7 +27,7 @@ const Page = ({
     >
       <div
         className={`grid w-full grid-rows-[auto_auto_1fr] bg-white bg-cover bg-center transition duration-700 dark:bg-neutral-600 sm:m-8 sm:w-[41rem] sm:rounded-3xl sm:shadow-lg ${
-          isListDisplayed ? "" : "max-h-[1000px]"
+          hasFullHeight ? "" : "max-h-[1000px]"
         } ${backgroundClassName}`}
       >
         <div className="flex items-end gap-1 px-8 py-4 font-bold tall:py-8">
