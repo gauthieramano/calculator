@@ -17,7 +17,7 @@ const KeyboardStories: ComponentMeta<typeof Keyboard> = {
   },
   decorators: [
     (Story) => (
-      <div id="decorator" className="grid h-[20rem] sm:h-[30rem]">
+      <div className="grid h-[20rem] sm:h-[30rem]" id="decorator">
         <Story />
       </div>
     ),

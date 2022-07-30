@@ -2,15 +2,18 @@ import type { ComponentMeta, ComponentStory } from "@storybook/react";
 
 import Page from "./Page";
 
+const DISPLAY = "Display";
+const KEYBOARD = "Keyboard";
+
 const DISPLAY_COMPONENT = (
   <div className="flex h-40 items-center justify-center bg-yellow-500 text-2xl font-black text-white">
-    Display
+    {DISPLAY}
   </div>
 );
 
 const KEYBOARD_COMPONENT = (
   <div className="flex min-h-[10rem] items-center justify-center bg-yellow-500 text-2xl font-black text-white">
-    Keyboard
+    {KEYBOARD}
   </div>
 );
 

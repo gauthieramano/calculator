@@ -16,6 +16,9 @@ type Props = {
 
 const LONG_LENGTH = 8;
 
+const LAST_COMPUTATION = "Last computation:";
+const PREVIOUS_COMPUTATIONS = "Previous computations:";
+
 const Display = ({
   operation,
   firstNumber,
@@ -37,20 +40,28 @@ const Display = ({
          *             Previous computations             *
          *************************************************/}
 
-        {isListReallyDisplayed && (
-          <div className="mt-4 border-b border-sky-200 pb-2 dark:border-gray-600">
-            <p className="mb-3 text-xs text-gray-400">Previous computations:</p>
-            {previousComputations.map((currentComputation) => (
-              <div key={currentComputation.time} className="flex gap-3">
-                <FaPlay className="text-cyan-600" />
-                <ComputationLine
-                  computation={currentComputation}
-                  className="text-xs"
-                />
-              </div>
-            ))}
-          </div>
-        )}
+        {
+          // eslint-disable-next-line react/jsx-no-leaked-render
+          isListReallyDisplayed && (
+            <div className="mt-4 border-b border-sky-200 pb-2 dark:border-gray-600">
+              <p className="mb-3 text-xs text-gray-400">
+                {PREVIOUS_COMPUTATIONS}
+              </p>
+              {previousComputations.map((currentComputation) => (
+                <div className="flex gap-3" key={currentComputation.time}>
+                  <FaPlay
+                    // eslint-disable-next-line react/forbid-component-props
+                    className="text-cyan-600"
+                  />
+                  <ComputationLine
+                    classname="text-xs"
+                    computation={currentComputation}
+                  />
+                </div>
+              ))}
+            </div>
+          )
+        }
 
         {/* **********************************************
          *               Last computation                *
@@ -63,18 +74,18 @@ const Display = ({
               : ""
           }`}
         >
-          {lastComputation && (
+          {!!lastComputation && (
             <>
               <p
                 className={`text-xs text-gray-400 ${
                   isListReallyDisplayed ? "mt-1 mb-3" : "mt-4"
                 }`}
               >
-                Last computation:
+                {LAST_COMPUTATION}
               </p>
               <ComputationLine
+                classname="text-xs"
                 computation={lastComputation}
-                className="text-xs"
               />
             </>
           )}
@@ -100,18 +111,18 @@ const Display = ({
               }
             >
               <PrettyNumber
-                value={firstNumber}
-                className={
+                classname={
                   secondNumber
                     ? "text-sm"
                     : isLongFirstNumber
                     ? "text-xl sm:text-4xl thin:text-2xl"
                     : "text-3xl sm:text-4xl thin:text-4xl"
                 }
+                value={firstNumber}
               />
             </div>
             <p className="text-4xl text-blue-700 dark:text-white">
-              {operation && ACTION_ICONS[operation]}
+              {!!operation && ACTION_ICONS[operation]}
             </p>
           </div>
         </div>
@@ -120,7 +131,7 @@ const Display = ({
          *                 Second number                 *
          *************************************************/}
 
-        {secondNumber !== "" && (
+        {!!secondNumber && (
           <div
             className={`h-16 self-end ${
               isLongSecondNumber
@@ -129,12 +140,12 @@ const Display = ({
             }`}
           >
             <PrettyNumber
-              value={secondNumber}
-              className={
+              classname={
                 isLongSecondNumber
                   ? "text-xl sm:text-4xl thin:text-2xl"
                   : "text-3xl sm:text-4xl thin:text-4xl"
               }
+              value={secondNumber}
             />
           </div>
         )}
@@ -144,13 +155,16 @@ const Display = ({
        *                  List button                  *
        *************************************************/}
 
-      {hasDisplayableList && (
-        <ListButton
-          isOpen={isListDisplayed}
-          onClick={toggleList}
-          className="absolute top-[-0.75rem] right-8"
-        />
-      )}
+      {
+        // eslint-disable-next-line react/jsx-no-leaked-render
+        hasDisplayableList && (
+          <ListButton
+            classname="absolute top-[-0.75rem] right-8"
+            isOpen={isListDisplayed}
+            onClick={toggleList}
+          />
+        )
+      }
     </div>
   );
 };

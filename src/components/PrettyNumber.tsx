@@ -1,17 +1,26 @@
 type Props = {
   value: string;
-  className?: string;
+  classname?: string;
 };
 
-const PrettyNumber = ({ value, className }: Props) => {
+const POINT = ".";
+
+const PrettyNumber = ({ value, classname }: Props) => {
   const [integer, decimal] = value.split(".");
   const hasPoint = value.includes(".");
 
   return (
     <div className="flex">
       <p className="font-bold">{integer}</p>
-      {hasPoint && <p className="font-bold">.</p>}
-      {decimal !== "" && <p className={className}>{decimal}</p>}
+      {
+        // eslint-disable-next-line react/jsx-no-leaked-render
+        hasPoint && (
+          <>
+            <p className="font-bold">{POINT}</p>
+            {!!decimal && <p className={classname}>{decimal}</p>}
+          </>
+        )
+      }
     </div>
   );
 };

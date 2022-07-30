@@ -9,6 +9,8 @@ type Props = {
   backgroundClassName?: string;
 };
 
+const CALCULATOR = "Calculator";
+
 const Page = ({
   hasFullHeight,
   displayComponent,
@@ -32,7 +34,7 @@ const Page = ({
       >
         <div className="flex items-end gap-1 px-8 py-4 font-bold tall:py-8">
           <p className="rounded bg-blue-700 px-3 text-xl text-white">
-            Calculator
+            {CALCULATOR}
           </p>
         </div>
 

@@ -30,7 +30,7 @@ Closed.args = {
 export const ClosedWithClassname = Template.bind({});
 ClosedWithClassname.args = {
   isOpen: false,
-  className: "text-4xl",
+  classname: "text-4xl",
   onClick,
 };
 

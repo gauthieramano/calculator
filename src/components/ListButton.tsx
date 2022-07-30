@@ -2,15 +2,16 @@ import { FaCaretDown, FaCaretRight, FaList } from "react-icons/fa";
 
 type Props = {
   isOpen: boolean;
-  className?: string;
+  classname?: string;
   onClick: () => void;
 };
 
-const ListButton = ({ isOpen, className = "", onClick }: Props) => (
+const ListButton = ({ isOpen, classname = "", onClick }: Props) => (
   <button
-    title={`${isOpen ? "Hide" : "Show"} previous computations`}
+    className={`rounded-full bg-blue-700 p-3 text-white hover:bg-blue-500 ${classname}`}
     onClick={onClick}
-    className={`rounded-full bg-blue-700 p-3 text-white hover:bg-blue-500 ${className}`}
+    title={`${isOpen ? "Hide" : "Show"} previous computations`}
+    type="button"
   >
     <div className="flex gap-2">
       {isOpen ? <FaCaretDown /> : <FaCaretRight />}

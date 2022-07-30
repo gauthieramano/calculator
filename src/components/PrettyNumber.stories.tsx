@@ -31,7 +31,7 @@ Float.args = {
 export const FloatWithClassmame = Template.bind({});
 FloatWithClassmame.args = {
   value: "123.456",
-  className: "text-4xl",
+  classname: "text-4xl",
 };
 
 export default PrettyNumberStories;

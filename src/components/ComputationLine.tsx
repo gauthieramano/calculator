@@ -3,23 +3,23 @@ import PrettyNumber from "./PrettyNumber";
 
 type Props = {
   computation: Computation;
-  className?: string;
+  classname?: string;
 };
 
 const ComputationLine = ({
   computation: { operation, firstNumber, secondNumber, result },
-  className,
+  classname,
 }: Props) => (
   <div className="flex flex-wrap items-center gap-2 pb-2 leading-3">
-    <PrettyNumber value={firstNumber} className={className} />
+    <PrettyNumber classname={classname} value={firstNumber} />
     <p className="text-blue-700 transition duration-700 dark:text-white">
       {ACTION_ICONS[operation]}
     </p>
-    <PrettyNumber value={secondNumber} className={className} />
+    <PrettyNumber classname={classname} value={secondNumber} />
     <p className="text-blue-700 transition duration-700 dark:text-white">
       {ACTION_ICONS[Action.Equal]}
     </p>
-    <PrettyNumber value={result} className={className} />
+    <PrettyNumber classname={classname} value={result} />
   </div>
 );
 

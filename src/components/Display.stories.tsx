@@ -4,6 +4,13 @@ import { Action, Computation } from "../utils";
 import Display from "./Display";
 import { OPERATION_MAPPING } from "./storybook-constants";
 
+const TEXT1 = "📝 Note:";
+const TEXT2 =
+  "If dark mode can't be disabled through the dedicated button in the toolbar, open the";
+const TEXT3 = "Atoms / DarkMode / Default";
+const TEXT4 =
+  "story, swith the component to light mode, and come back here (the button will work as expected).";
+
 const toggleList = () => {
   console.log("TOGGLE");
 };
@@ -66,15 +73,11 @@ const DisplayStories: ComponentMeta<typeof Display> = {
         </div>
 
         <p className="px-4 text-neutral-500">
-          <span className="text-xl">📝 Note:</span>{" "}
+          <span className="text-xl">{TEXT1}</span>{" "}
           <span className="text-sm italic">
-            If dark mode can&apos;t be disabled through the dedicated button in
-            the toolbar, open the{" "}
-            <span className="bg-amber-200 text-black">
-              &nbsp;Atoms&nbsp;/&nbsp;DarkMode&nbsp;/&nbsp;Default&nbsp;&nbsp;
-            </span>{" "}
-            story, swith the component to light mode, and come back here (the
-            button will work as expected).
+            {TEXT2}{" "}
+            <span className="bg-amber-200 text-black">&nbsp;{TEXT3}&nbsp;</span>{" "}
+            {TEXT4}
           </span>
         </p>
       </div>

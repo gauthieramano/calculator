@@ -11,9 +11,9 @@ const COMPUTATION: Computation = {
   time: "1658396611503",
 };
 
-const getArgs = (className?: string) => ({
+const getArgs = (classname?: string) => ({
   computation: COMPUTATION,
-  className,
+  classname,
 });
 
 /* ********************************************************

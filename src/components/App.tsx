@@ -36,20 +36,20 @@ const App = () => {
 
   return (
     <Page
-      hasFullHeight={isListDisplayed}
+      backgroundClassName={backgroundClassName}
       displayComponent={
         <Display
-          operation={operation}
           firstNumber={firstNumber}
-          secondNumber={secondNumber}
-          lastComputation={lastComputation}
-          previousComputations={previousComputations}
           isListDisplayed={isListDisplayed}
+          lastComputation={lastComputation}
+          operation={operation}
+          previousComputations={previousComputations}
+          secondNumber={secondNumber}
           toggleList={toggleList}
         />
       }
+      hasFullHeight={isListDisplayed}
       keyboardComponent={<Keyboard handleAction={handleAction} />}
-      backgroundClassName={backgroundClassName}
     />
   );
 };

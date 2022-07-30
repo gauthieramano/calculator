@@ -11,7 +11,7 @@ const handleAction = (nextAction: Action, nextDigit?: number) => {
 const getArgs = (action: Action, digit?: number) => ({
   action,
   digit,
-  className: "font-bold text-4xl",
+  classname: "font-bold text-4xl",
   handleAction,
 });
 
